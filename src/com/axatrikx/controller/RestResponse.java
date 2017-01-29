@@ -1,6 +1,11 @@
 package com.axatrikx.controller;
 
+import java.util.Arrays;
 import java.util.HashMap;
+
+import org.apache.http.params.HttpParams;
+
+
 
 public class RestResponse {
 
@@ -8,10 +13,18 @@ public class RestResponse {
 	private String responseBody;
 	private HashMap<String, String> headers;
 	private String responseMessage;
-
+	private HashMap<String, String> params;
+	
 	public RestResponse() {
 		headers = new HashMap<String, String>();
+		
 	}
+
+	
+
+	
+
+
 
 	public int getResponseCode() {
 		return responseCode;
@@ -48,5 +61,17 @@ public class RestResponse {
 	public void setResponseMessage(String responseMessage) {
 		this.responseMessage = responseMessage;
 	}
+
+	public HashMap<String, String> getParams() {
+		return params;
+	}
+
+	public void setParams(HashMap<String, String> params) {
+		this.params = params;
+	}
+
+	
+
+	
 
 }

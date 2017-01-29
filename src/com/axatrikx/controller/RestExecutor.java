@@ -24,6 +24,7 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 
+
 public class RestExecutor {
 
 	private HttpClient client;
@@ -51,7 +52,9 @@ public class RestExecutor {
 	 * @return
 	 */
 	public RestValidator get(String path, HashMap<String, String> headers) {
+		
 		HttpGet request = new HttpGet(url + path);
+		
 		HttpResponse response;
 		/*
 		 * The response object which holds the details of the response.
@@ -84,9 +87,14 @@ public class RestExecutor {
 			/*
 			 * Setting values for the response object
 			 */
+			
+			
+			//System.out.println(responseString);
 			resResponse.setResponseBody(responseString.toString());
+			///System.out.println(resResponse.getResponseBody());
 			resResponse.setResponseCode(response.getStatusLine().getStatusCode());
 			resResponse.setResponseMessage(response.getStatusLine().getReasonPhrase());
+			
 			Header[] rheaders = response.getAllHeaders();
 			for (Header header : rheaders) {
 				resResponse.setHeader(header.getName(), header.getValue());

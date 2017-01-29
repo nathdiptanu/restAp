@@ -1,5 +1,6 @@
 package com.axatrikx.controller;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Set;
 
@@ -38,6 +39,7 @@ public class RestValidator {
 
 	public RestValidator expectInBody(String content) {
 		Assert.assertTrue("Body doesnt contain string : " + content, response.getResponseBody().contains(content));
+		
 		return this;
 	}
 	
@@ -50,4 +52,8 @@ public class RestValidator {
 		return response;
 	}
 
-}
+
+	
+	}
+
+

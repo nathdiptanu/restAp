@@ -7,7 +7,7 @@ import com.axatrikx.controller.RestExecutor;
 
 public class TestScript {
 
-	private static final String URL = "http://localhost:3000";
+	private static final String URL = "http://maps.googleapis.com/maps/api/geocode";
 
 	private static RestExecutor executor;
 
@@ -20,6 +20,20 @@ public class TestScript {
 	}
 
 	@Test
+	public void testGETMethod1() {
+		/*
+		 * Performs GET operation on http://localhost:3000/posts.
+		 * Note that we give only the path in the get method as we use 
+		 * the domain part while initializing the RestExecutor object
+		 */
+		executor.get("/json?address=chicago&sensor=false&#8221")
+		
+		.expectCode(200)			// Expected code of 200
+		.expectMessage("OK")
+		.expectInBody( "address_components");
+		
+	}
+	@Test
 	public void testGETMethod() {
 		/*
 		 * Performs GET operation on http://localhost:3000/posts.
@@ -28,11 +42,10 @@ public class TestScript {
 		 */
 		executor.get("/posts")
 			.expectCode(200)			// Expected code of 200
-			.expectMessage("OK")		// Expected Message of 'OK'
-			.expectHeader("Content-Type", "application/json; charset=utf-8") // Content-Type header value
-			.expectInBody("rest testing framework")	// Content inside the response body
-			.expectInBody("webdriver framework") 	// Another Content inside the response body
-			.expectInBody("axatrikx");				// Yet Another Content inside the response body
+			.expectMessage("OK")
+			.expectInBody( "Chicago, IL, USA");
+		// Expected Message of 'OK'
+					// Yet Another Content inside the response body
 		
 		/*
 		 * GET for a specific item
